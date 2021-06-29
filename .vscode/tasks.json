@@ -1,0 +1,54 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"isBackground": true,
+			"script": "watcher-win",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "npm: watcher-win; -w -o testbuild.html",
+			"detail": "gulp build && tweego -w -f %npm_package_config_format% -t -m src/ --head=src/head-content.html -o dist/testbuild.html project"
+		},
+		{
+			"type": "npm",
+			"script": "unbuilder-win",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: unbuilder-win",
+			"detail": "gulp build && tweego -f %npm_package_config_format% -m src/modules/ --head=src/head-content.html -o dist/index.html project && tweego -d -o dist/index.twee dist/index.html"
+		},
+		{
+			"type": "npm",
+			"script": "build-win",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build-win",
+			"detail": "gulp build && tweego -f %npm_package_config_format% -m src/modules/ --head=src/head-content.html -o dist/build.html project && opn dist/build.html"
+		},
+		{
+			"type": "npm",
+			"script": "lint-css",
+			"problemMatcher": [],
+			"label": "npm: lint-css",
+			"detail": "gulp validate"
+		},
+		{
+			"type": "npm",
+			"script": "lint-js",
+			"problemMatcher": [],
+			"label": "npm: lint-js",
+			"detail": "gulp lint"
+		},
+		{
+			"type": "npm",
+			"script": "electron-win",
+			"problemMatcher": [],
+			"label": "npm: electron-win",
+			"detail": "gulp build && tweego -f %npm_package_config_format% -m src/modules/ --head=src/head-content.html -o electron/index.html project"
+		}
+	]
+}

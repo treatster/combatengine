@@ -1,0 +1,25 @@
+:: SetFlag [widget nobr]
+/*  SetFlag : Set Flag X to value Y (Y defaults to True).  Flag names are NOT case sensitive.  */
+/*  EXAMPLE: <<SetFlag "Mentor" "Bob">>  */
+/*  EXAMPLE: <<SetFlag "TrialMed">>  = sets TrialMed flag to True  */
+<<widget "SetFlag">>
+    <<set _Fnam = $args[0].toLowerCase()>>
+    <<if ndef $Flags>>
+        <<set $Flags = {}>>
+    <</if>>
+    <<if def $args[1]>>
+        <<if $args[1] == false>>
+            <<if def $Flags[_Fnam]>>
+                <<run delete $Flags[_Fnam]>>
+            <</if>>
+        <<else>>
+            <<set $Flags[_Fnam] = $args[1]>>
+        <</if>>
+    <<else>>
+        <<set $Flags[_Fnam] = true>>
+    <</if>>
+    /* Event flags: */
+    /* Keep track of your flags here, for example: */
+    /* Mentor = Bob or Joe */
+    /* TrialMed = denotes whether you've agreed to take Dr. Acula's medication */
+<</widget>>
